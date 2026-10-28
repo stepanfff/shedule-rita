@@ -11,7 +11,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./style.css?v=2">
 <title>Мои пары — расписание</title>
 </head>
 <body>
@@ -25,15 +25,40 @@
   <div class="week-nav"><button class="arrow" id="prev-week" aria-label="Предыдущая неделя">‹</button><div class="week-center"><span id="week-label"></span><span id="week-range"></span></div><button class="arrow" id="next-week" aria-label="Следующая неделя">›</button></div>
   <div class="days" id="days"></div>
  </nav>
+ <p id="storage-error" class="storage-error" role="alert" hidden></p>
  <section id="status" class="status" aria-label="Состояние дня"></section>
  <section id="lessons" class="lessons" aria-label="Пары выбранного дня"></section>
  <p id="day-summary" class="day-summary"></p>
  <footer>
-  <div class="profile"><span>Рисик люблю тя,хи)</span><span>Время Ростова · UTC+3</span></div>
-  <details><summary>О расписании</summary><div class="about"><p>Верхняя и нижняя недели переключаются автоматически. Точка отсчёта: 26 октября 2026 — верхняя, 2 ноября — нижняя.</p><p><span class="legend upper"></span>Верхняя <span class="legend lower"></span>Нижняя <span class="legend fixed"></span>Каждую неделю</p><p>Иностранный язык: Белоусова О. А., кабинет 408 на верхней неделе и 520 на нижней.</p></div></details>
+  <div class="profile"><span>Люблю тя рисик хихи)</span><span>Время Ростова · UTC+3</span></div>
+  <p class="local-hint">Заметки, домашка и изменения сохраняются только в этом браузере. Они не синхронизируются между устройствами.</p>
+  <details><summary>О расписании</summary><div class="about"><p>Верхняя и нижняя недели переключаются автоматически. Точка отсчёта: 26 октября 2026 — верхняя, 2 ноября — нижняя.</p><p><span class="legend upper"></span>Верхняя <span class="legend lower"></span>Нижняя <span class="legend fixed"></span>Каждую неделю</p><p>Отменить или перенести отдельную пару можно кнопкой «Изменить» в её карточке. Правка действует только на выбранную дату. Кнопка «Вернуть по расписанию» отменяет перенос и отмену; заметки остаются.</p><p>Изменения на праздники и замены автоматически не поступают. Очистка данных браузера удаляет личные заметки и правки.</p><p>Иностранный язык: Белоусова О. А., кабинет 408 на верхней неделе и 520 на нижней.</p></div></details>
  </footer>
 </main>
+<div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+<dialog id="lesson-editor" class="editor" aria-labelledby="editor-title">
+ <div class="editor-head"><div><p class="editor-kicker" id="editor-kicker"></p><h2 id="editor-title"></h2></div><button type="button" class="close-editor" id="close-editor" aria-label="Закрыть">×</button></div>
+ <p id="editor-date" class="editor-date"></p>
+ <p id="editor-error" class="editor-error" role="alert" hidden></p>
+ <form id="notes-form" hidden>
+  <label class="field">Заметка<textarea id="note-input" rows="3" maxlength="4000" placeholder="Что взять с собой, что уточнить…"></textarea></label>
+  <label class="field">Домашнее задание<textarea id="homework-input" rows="4" maxlength="4000" placeholder="Что подготовить к этой паре…"></textarea></label>
+  <label class="done-field"><input id="homework-done" type="checkbox">Домашка выполнена</label>
+  <p class="editor-hint">Запись относится к этой паре на эту дату. При переносе она останется с парой.</p>
+  <button type="submit" class="save-button">Сохранить</button>
+ </form>
+ <section id="change-panel" hidden>
+  <p class="editor-hint">Изменения только для этой пары. Другие недели останутся прежними.</p>
+  <form id="move-form">
+   <label class="field">Новая дата<input id="move-date" type="date" min="2000-01-01" max="2100-12-31" required></label>
+   <div class="time-fields"><label class="field">Начало<input id="move-start" type="time" required></label><label class="field">Окончание<input id="move-end" type="time" required></label></div>
+   <label class="field">Кабинет<input id="move-room" type="text" maxlength="60" required placeholder="Например, 408 или Спортзал"></label>
+   <button type="submit" class="save-button">Сохранить перенос</button>
+  </form>
+  <div class="change-actions"><button id="cancel-lesson" type="button" class="danger-button">Отменить эту пару</button><button id="restore-lesson" type="button" class="restore-button" hidden>Вернуть по расписанию</button></div>
+ </section>
+</dialog>
 <noscript><p class="noscript">Для расписания и таймеров включи JavaScript в браузере.</p></noscript>
-<script type="module" src="./app.mjs"></script>
+<script type="module" src="./app.mjs?v=2"></script>
 </body>
 </html>
