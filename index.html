@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#171819">
+<meta name="description" content="Твоё расписание: пары, кабинеты и время до начала занятий. Ростов-на-Дону, подгруппа Белоусовой.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Мои пары">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./style.css">
+<title>Мои пары — расписание</title>
+</head>
+<body>
+<main class="app">
+ <header>
+  <div class="eyebrow"><span class="brand-dot"></span> МОИ ПАРЫ <span class="city">Ростов-на-Дону · <time id="clock"></time></span></div>
+  <div class="heading"><h1>Расписание</h1><button class="today" id="today">Сегодня</button></div>
+  <div class="date-line"><p id="selected-date"></p><label class="date-picker" aria-label="Выбрать дату"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="4"/><path d="M7 3v4m10-4v4M3 11h18M7 15h3m4 0h3"/></svg><input id="date-input" type="date" aria-label="Выбрать дату"></label></div>
+ </header>
+ <nav class="calendar" aria-label="Выбор дня">
+  <div class="week-nav"><button class="arrow" id="prev-week" aria-label="Предыдущая неделя">‹</button><div class="week-center"><span id="week-label"></span><span id="week-range"></span></div><button class="arrow" id="next-week" aria-label="Следующая неделя">›</button></div>
+  <div class="days" id="days"></div>
+ </nav>
+ <section id="status" class="status" aria-label="Состояние дня"></section>
+ <section id="lessons" class="lessons" aria-label="Пары выбранного дня"></section>
+ <p id="day-summary" class="day-summary"></p>
+ <footer>
+  <div class="profile"><span>Белоусова О. А.</span><span>Время Ростова · UTC+3</span></div>
+  <details><summary>О расписании</summary><div class="about"><p>Верхняя и нижняя недели переключаются автоматически. Точка отсчёта: 26 октября 2026 — верхняя, 2 ноября — нижняя.</p><p><span class="legend upper"></span>Верхняя <span class="legend lower"></span>Нижняя <span class="legend fixed"></span>Каждую неделю</p><p>Расписание перенесено с твоей фотографии. Замены, отмены и изменения на праздники нужно уточнять в учебном заведении.</p><p>Иностранный язык: Белоусова О. А., кабинет 408 на верхней неделе и 520 на нижней.</p></div></details>
+ </footer>
+</main>
+<noscript><p class="noscript">Для расписания и таймеров включи JavaScript в браузере.</p></noscript>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>
